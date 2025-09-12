@@ -44,6 +44,13 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
+		<!-- Add to pom.xml -->
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>java-dotenv</artifactId>
+			<version>5.2.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.theokanning.openai-gpt3-java</groupId>
 			<artifactId>service</artifactId>
