@@ -30,7 +30,8 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Build project
-        run: mvn clean install
+        run: mvn clean install -DskipTests
+
 
       - name: Run tests
         run: mvn test
