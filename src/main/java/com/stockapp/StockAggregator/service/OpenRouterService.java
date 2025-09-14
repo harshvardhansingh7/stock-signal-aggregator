@@ -35,11 +35,11 @@ public class OpenRouterService {
      * { "symbol": "...", "decision": "BUY|SELL|HOLD", "reasoning": "..." }
      */
     public AIAnalysisResponse askAIForDecision(StockAnalysisDTO dto) throws Exception {
-        String userPrompt = "You are an advanced financial analyst. Given the following stock analysis JSON, " +
-                "return ONLY a JSON object in this exact format (no extra text): " +
-                "{\"symbol\":\"<symbol>\", \"decision\":\"BUY|SELL|HOLD\", \"reasoning\":\"<detailed explanation>\"}. " +
-                "Use the data to produce a single concise decision and a clear reasoning that references fundamentals and indicators. " +
-                "Now here is the data: " + mapper.writeValueAsString(dto);
+        String userPrompt = "You are a highly skilled financial analyst. Carefully analyze the following stock analysis JSON data. " +
+                "Your task is to return a response strictly as a valid JSON object in the following format (no extra text, no explanations outside JSON): " +
+                "{\"symbol\":\"<symbol>\", \"decision\":\"BUY|SELL|HOLD\", \"reasoning\":\"<clear and concise reasoning using fundamentals and indicators>\"}. " +
+                "Make sure the reasoning is short, precise, and directly supports the decision. " +
+                "Here is the data: " + mapper.writeValueAsString(dto);
 
         Map<String, Object> messageSystem = Map.of(
                 "role", "system",
@@ -56,7 +56,7 @@ public class OpenRouterService {
         body.put("messages", messages);
         body.put("temperature", 0.0);
 
-        // ✅ Required headers for OpenRouter
+        // Required headers for OpenRouter
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(openRouterKey);
